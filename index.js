@@ -25,7 +25,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
- // 不允许重写module这个全局变量
+  // 不允许重写module这个全局变量
   globals: {
     module: 'readonly',
   },
@@ -50,7 +50,7 @@ module.exports = {
       },
     ],
     // 行的最大长度
-    'max-len': ['error',{
+    'max-len': ['error', {
       // 强制行的最大长度
       code: 120,
       // 指定 tab 字符的宽度
@@ -94,6 +94,21 @@ module.exports = {
 
       // ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
     }],
+    quotes: [
+      2,
+      'single',
+      {
+        avoidEscape: true,
+        allowTemplateLiterals: true,
+      },
+    ],
+    'no-shadow': [
+      2,
+      {
+        hoist: 'all',
+        allow: ['resolve', 'reject', 'done', 'next', 'err', 'error'],
+      },
+    ],
 
     // react
     // 属性不能用扩展运算符形式传递
@@ -108,7 +123,16 @@ module.exports = {
 
     // 一条JSX语句独占一行，关闭 其实可以不用关闭的
     'react/jsx-one-expression-per-line': 'off',
-    'react/jsx-filename-extension': 'off',
+    'react/jsx-filename-extension': [
+      1,
+      {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
+      },
+    ],
+    'react/require-default-props': 'off',
+
+    // hooks
+    'react-hooks/exhaustive-deps': 'warn',
 
     // import
     'import/no-unresolved': 0,
@@ -128,7 +152,21 @@ module.exports = {
 
     // typescript
     // ts定义 interface时 必须以I开头 type 以T开头
-    '@typescript-eslint/interface-name-prefix': [2, { prefixWithI: 'always' }],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'interface',
+        format: ['PascalCase'],
+        custom: {
+          regex: '^I[A-Z]',
+          match: true,
+        },
+      }, {
+        selector: 'typeParameter',
+        format: ['PascalCase'],
+        prefix: ['T'],
+      },
+    ],
     '@typescript-eslint/explicit-function-return-type': 'off',
   },
 };
