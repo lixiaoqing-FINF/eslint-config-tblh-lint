@@ -130,6 +130,7 @@ module.exports = {
       },
     ],
     'react/require-default-props': 'off',
+    'react/prop-types': 'off',
 
     // hooks
     'react-hooks/exhaustive-deps': 'warn',
