@@ -1,12 +1,14 @@
 {
   "name": "eslint-config-tblh-lint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tblh-fe eslint配置",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["eslint"],
+  "keywords": [
+    "eslint"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
