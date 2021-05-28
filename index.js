@@ -37,8 +37,6 @@ module.exports = {
     'no-unused-expressions': 'off',
     // 最大400行 提示
     'max-lines': ['error', 400],
-    // 禁止出现空函数
-    'no-empty-function': [2, { allow: [] }],
     // 要求箭头函数的参数使用圆括号
     'arrow-parens': [1, 'as-needed'],
     // 缩进 两个空格缩进 SwitchCase一个缩进空格
@@ -67,9 +65,6 @@ module.exports = {
       // 忽略包含模板字面量的行
       ignoreTemplateLiterals: true,
     }],
-    'newline-per-chained-call': 2,
-    // 禁止在可能与比较操作符相混淆的地方使用箭头函数 var x = a => 1 ? 2 : 3; 会报错 。这样不会报错（用个括号把表达式包起来）： var x = a => (1 ? 2 : 3);
-    'no-confusing-arrow': 2,
     'no-console': 1,
     // 禁止未使用过的变量 已定义 未使用
     'no-unused-vars': [2, {
@@ -79,9 +74,8 @@ module.exports = {
       vars: 'all', varsIgnorePattern: 'React', args: 'after-used', ignoreRestSiblings: true,
     }],
     // 禁止在变量定义之前使用它们
-
-    // 考虑到columns中render中的函数定义可能在columns之后,关闭variables校验,但是variables: false关闭了，会存在使用未定义的变量！！！！
-    'no-use-before-define': [1, { functions: true, classes: true, variables: true }],
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error'],
     'object-curly-newline': ['error', {
 
       // ObjectPattern解构赋值模式、ImportDeclaration（antd 组件）、ExportDeclaration就不起新的一行了
@@ -102,6 +96,7 @@ module.exports = {
         allowTemplateLiterals: true,
       },
     ],
+    'jsx-quotes': ['warn', 'prefer-single'],
     'no-shadow': [
       2,
       {
@@ -136,8 +131,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
 
     // import
-    'import/no-unresolved': 0,
-    'import/extensions': 0,
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
 
     // 非import导入语句后不能是导入语句了 ，得开着
     // 'import/imports-first': 0,
@@ -158,14 +153,17 @@ module.exports = {
       {
         selector: 'interface',
         format: ['PascalCase'],
-        custom: {
-          regex: '^I[A-Z]',
-          match: true,
-        },
-      }, {
-        selector: 'typeParameter',
+        prefix: ['I'],
+      },
+      {
+        selector: 'typeAlias',
         format: ['PascalCase'],
         prefix: ['T'],
+      },
+      {
+        selector: 'enum',
+        format: ['PascalCase'],
+        prefix: ['E'],
       },
     ],
     '@typescript-eslint/explicit-function-return-type': 'off',
