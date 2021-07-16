@@ -57,7 +57,7 @@ module.exports = {
       ignoreUrls: true,
       // 忽略所有拖尾注释和行内注释
       // 注释的长度限制一下
-      ignoreComments: false,
+      ignoreComments: true,
       // 忽略包含正则表达式的行
       ignoreRegExpLiterals: true,
       // 忽略含有双引号或单引号字符串的行
